@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Django's role in the polyglot web</title>
+
+    <meta name="author" content="David Gouldin">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/heroku.css" id="theme">
+    <link rel="stylesheet" href="lib/css/highlight/github.css">
+    <style>
+    .light {
+      opacity: 0.5;
+    }
+    </style>
+
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <header>
+            <h1>django's role</h1>
+            <h2>in the polyglot web</h2>
+          </header>
+          <p>
+            by David Gouldin / <a href="http://twitter.com/dgouldin">@dgouldin</a>
+          </p>
+          <p><a href="http://django-polyglot.herokuapp.com/">django-polyglot.herokuapp.com</a></p>
+        </section>
+        <section>
+          <section>
+            <h1>a brief history</h1>
+            <aside class="notes">
+              <ul>
+                <li>
+                  Before we talk about django's role today, it's useful for us
+                  to understand a bit about its roots.
+                </li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>django's 10th birthday</h2>
+            </header>
+            <img src="img/git-commit-history.png" height="700">
+            <aside class="notes">
+              <ul>
+                <li>django is 10 yaers old this year</li>
+                <li>it's aged remarkably well</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>django is not a cms</h2>
+            </header>
+            <h3>(but it was built for one)</h3>
+            <aside class="notes">
+              <ul>
+                <li>django has its roots in journalism</li>
+                <li>contrib belies those roots (content types, localflavor)</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>"perfectionists with deadlines"</h2>
+            <aside class="notes">
+              <ul>
+                <li>the motivation for a project dictates its trajectory</li>
+                <li>most of django's strengths and weaknesses can be summed up
+                  in this one phrase</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>the web</h1>
+            <h2 class="light">2005-2015</h2>
+            <aside class="notes">
+              <ul>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>we've moved from this</h2>
+            </header>
+            <img src="img/lamp-stack.svg" height="600">
+            <aside class="notes">
+              <ul>
+                <li>Remember the days when you could describe your stack with an
+                  acronym?</li>
+                <li>1 data store, usually relational</li>
+                <li>request/response cycle ecapsulated all business logic</li>
+                <li>server-side views responsible for all content rendering</li>
+                <li>this is the web django was born out of</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>to this</h2>
+            </header>
+            <img src="img/soa-hell.png">
+          </section>
+          <section>
+            <header>
+              <h2>er, this</h2>
+            </header>
+            <img src="img/soa.svg" height="600">
+            <aside class="notes">
+              <ul>
+                <li>A single service is potentially comprised of many
+                  processes</li>
+                <li>Services (mostly) talk HTTP to each other</li>
+                <li>Pubsub (usually via redis) allows efficient 1:many
+                  communication between services</li>
+                <li>MOST IMPORTANTLY: the web client is now just another
+                  service, a consumer of public services published by the
+                  server</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>expectations</h1>
+            <h2>web "site" 🆚  "app"</h2>
+            <aside class="notes">
+              <ul>
+                <li>expectations have dramatically changed over the past
+                  decade</li>
+                <li>If your site looks like an application, users expect it to
+                  act like one</li>
+                <li>Fallacies of distributed computing mean nothing to
+                  users.</li>
+                <li>responsiveness is now an expectation, and sever-side mvc
+                  doesn't cut it</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2 class="light">django's</h2>
+            <h1>strengths</h1>
+            <aside class="notes">
+              <ul>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>python</h2>
+            <aside class="notes">
+              <ul>
+                <li>no seriously, being written in python is a huge
+                  strength</li>
+                <li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>"perfectionists with deadlines"</h2>
+            <aside class="notes">
+              <ul>
+                <li>all of django's strengths fall under this umbrella</li>
+                <li>django is still an awesome tool for getting stuff done</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>orm &amp; migrations</h2>
+            </header>
+            <aside class="notes">
+              <ul>
+                <li>django's orm is still my favorite</li>
+                <li>migrations built in</li>
+                <li>orm sets the foundation for other productive tools</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h3><pre><code class="python">from django.contrib import admin</code></pre></h3>
+            </header>
+            <aside class="notes">
+              <ul>
+                <li>even with a dated design, the admin is an extremely powerful
+                  "battery included"</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>django rest framework</h2>
+            </header>
+            <aside class="notes">
+              <ul>
+                <li>super quick to get up and running with basic CRUD based on
+                  orm models</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>celery</h2>
+            </header>
+            <aside class="notes">
+              <ul>
+                <li>every non-trivial web application needs an asynchronous work
+                queue</li>
+                <li>celery is a best in class tool, a huge advantage to putting
+                  core business logic in python</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2 class="light">django's</h2>
+            <h1>weaknesses</h1>
+            <aside class="notes">
+              <ul>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>c10k</h2>
+            <aside class="notes">
+              <ul>
+                <li>most evident in long-polling and websocket apps</li>
+                <li>python wasn't built to be good at massive concurrency</li>
+                <li>solutions exist, but most do so at the expense of library
+                  support</li>
+                <li>Python, at least python + django, is just not the right tool
+                  for this job</li>
+                <li>node.js and go were built with concurrency in mind</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>js client integration</h2>
+            <aside class="notes">
+              <ul>
+                <li>As we move toward richer js clients for our web apps, we've
+                  developed a suite of tools to help</li>
+                <li>Most of those tools also exist within the js community</li>
+                <li>We don't get the full benefit without js on the server</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>example problems</h1>
+            <aside class="notes">
+              <ul>
+                <li>let's look at a few examples of problems and how we might
+                  solve them using a multi-platform web architecture</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>push to web clients</h1>
+            <aside class="notes">
+              <ul>
+                <li>Lots of applications want to be able to push data to web
+                  clients. Django still doesn't have a great solution.</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>django solution</h2>
+            </header>
+            <img src="img/long-polling.svg">
+            <aside class="notes">
+              <ul>
+                <li>Long-polling. Ties up web workers, will DDOS busy
+                  sites.</li>
+                <li>Some gevent monstrosity. Please, just don't.</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header style="margin-bottom: 50px;">
+              <h2>polyglot solution</h2>
+            </header>
+            <img src="img/websocketd.png" height="100" style="margin: 50px 0">
+            <img src="img/socket-io.png" height="200">
+            <img src="img/golang.png" height="200">
+
+            <aside class="notes">
+              <ul>
+                <li>unix pipes: websocketd</li>
+                <li>pure go: built-in websocket package</li>
+                <li>js: socket.io</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>async task results</h1>
+            <aside class="notes">
+              <ul>
+                <li>Let's say your client calls an API endpoint which launches
+                  an async task, but the client needs to know the result of the
+                  task before it can reasonably continue.</li>
+                <li>These problems commonly surface in a "waiting" UI state.
+                  (Think travel search engines like Hipmunk.)</li>
+                <li>How do you solve this problem?</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>django solution</h2>
+            </header>
+            <img src="img/async-task-results.svg" height="600">
+            <aside class="notes">
+              <ul>
+                <li>Expose an API endpoint which takes a task id and responds
+                  with the task state and result</li>
+                <li>Include task ids in endpoints which launch async tasks</li>
+                <li>setInterval in the client to poll for the task result</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>polyglot solution</h2>
+            </header>
+            <img src="img/async-task-results-polyglot.svg" height="600">
+            <aside class="notes">
+              <ul>
+                <li>Include task ids in endpoints which launch async tasks</li>
+                <li>Client opens a websocket to a server which acts as a bridge
+                  to redis pubsub</li>
+                <li>Allow clients to subscribe to tasks using task id as a
+                  pubsub channel name</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>server side js rendering</h1>
+            <aside class="notes">
+              <ul>
+                <li>It's becoming increasingly common for javascript libraries
+                  to support server side rendering of initial state in order to
+                  minimize ttime to usable page.</li>
+                <li>This cannot happen without js on the sever.</li>
+                <li>Use CORS to serve your client app from a different domain
+                  than your django api.</li>
+                <li>Alternatively, have node proxy api calls back to django</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h1>polyglot problems</h1>
+          <h3>really, SOA problems</h3>
+        </section>
+        <section>
+          <section>
+            <h1>shared authentication</h1>
+            <aside class="notes">
+              <ul>
+                <li>As soon as you have clients accessing more than 1 service
+                  directly, you need a shared authentication mechanism</li>
+                <li>On web clients, there are 2 stateful mechanisms: local
+                  storage and cookies</li>
+                <li>If you use django.contrib.auth, make sure you issue the
+                  cookie on a domain that will be sent with requests to each
+                  public service</li>
+                <li>The alternative is to store a 2-legged oauth token in
+                  local storage and append it to requests to public services
+                  from the client</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>conclusions</h1>
+          </section>
+          <section>
+            <h2>say no to full stack python</h2>
+            <aside class="notes">
+              <ul>
+                <li>Right tool for the job means there are some jobs python is
+                  just not the right tool for</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>http is your friend</h2>
+            </header>
+            <h3>(when it's not, pubsub is)</h3>
+            <aside class="notes">
+              <ul>
+                <li>Right tool for the job means there are some jobs python is
+                  just not the right tool for</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <header>
+            <h1>Heroku is hiring</h1>
+            <h3>and we have employees all over the world</h3>
+          </header>
+          <p><a href="https://www.heroku.com/careers">heroku.com/careers</a></p>
+        </section>
+        <section>
+          <h1>Questions?</h1>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: Reveal.getQueryHash().theme,
+        transition: Reveal.getQueryHash().transition || 'default',
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
