@@ -386,10 +386,32 @@
               </ul>
             </aside>
           </section>
-        </section>
-        <section>
-          <h1>polyglot problems</h1>
-          <h3>really, SOA problems</h3>
+          <section>
+            <header>
+              <h2>django solution</h2>
+            </header>
+            <p>¯\_(ツ)_/¯ <pre><code class="python">subprocess.call(['node', 'render.js'])</code></pre></p>
+            <aside class="notes">
+              <ul>
+                <li>Subprocess to node?</li>
+                <li>Straw man: slow, still running node</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>polyglot solution</h2>
+            </header>
+            <p>
+              <pre><code class="javascript">React.renderToString(BaseElement)</code></pre>
+            </p>
+            <aside class="notes">
+              <ul>
+                <li>Depending on how you handle setting element state, there's a
+                  bit more to it than this, but that's the gist</li>
+              </ul>
+            </aside>
+          </section>
         </section>
         <section>
           <section>
@@ -400,12 +422,39 @@
                   directly, you need a shared authentication mechanism</li>
                 <li>On web clients, there are 2 stateful mechanisms: local
                   storage and cookies</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>django.contrib.auth</h2>
+            </header>
+            <img src="img/cookie-auth.svg">
+            <aside class="notes">
+              <ul>
                 <li>If you use django.contrib.auth, make sure you issue the
                   cookie on a domain that will be sent with requests to each
                   public service</li>
+                <li>If you use the admin, you won't have to log into it
+                  separately</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>access token</h2>
+            </header>
+            <img src="img/access-token-auth.svg">
+            <aside class="notes">
+              <ul>
                 <li>The alternative is to store a 2-legged oauth token in
                   local storage and append it to requests to public services
                   from the client</li>
+                <li>It's worth noting that in both of these scenarios, django
+                  will need to serve an auth page (either to provide a session
+                  cookie or an access token)</li>
+                <li>You can also use local storage, but then there's no way to
+                  take advantage of server side rendering</li>
               </ul>
             </aside>
           </section>
@@ -430,8 +479,21 @@
             <h3>(when it's not, pubsub is)</h3>
             <aside class="notes">
               <ul>
-                <li>Right tool for the job means there are some jobs python is
-                  just not the right tool for</li>
+                <li>All of the web services you build know how to speak and
+                  listen in http. Take advantage of that.</li>
+                <li>When 1:1 communication between services won't do, pubsub is
+                  a great tool.</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>web browsers are service consumers</h2>
+            <aside class="notes">
+              <ul>
+                <li>When you embrace the web browser as nothing more than  a
+                  consumer of your public services, then you're free to think of
+                  much more appropriate application architectures for moden web
+                  apps.</li>
               </ul>
             </aside>
           </section>
