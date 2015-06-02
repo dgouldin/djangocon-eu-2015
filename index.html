@@ -96,7 +96,7 @@
               <ul>
                 <li>Django's slogan is "perfectionists with deadlines"</li>
                 <li>This gives us an idea of the the purpose of Django, the
-                  motivation for the project that has dictateted its
+                  motivation for the project that has dictated its
                   trajectory</li>
                 <li>most of django's strengths and weaknesses can be summed up
                   in this one phrase</li>
@@ -127,7 +127,9 @@
                 <li>1 data store, usually relational</li>
                 <li>request/response cycle ecapsulated all business logic</li>
                 <li>server-side views responsible for all content rendering</li>
-                <li>this is the web django was born out of</li>
+                <li>this is the web django was born out of, the web whose
+                  problems it was intended to solve</li>
+                <li>so we've moved from this ...</li>
               </ul>
             </aside>
           </section>
@@ -162,8 +164,8 @@
             <h2>web "site" 🆚  "app"</h2>
             <aside class="notes">
               <ul>
-                <li>expectations have dramatically changed over the past
-                  decade</li>
+                <li>over the past decade, expectations have changed
+                  dramatically</li>
                 <li>If your site looks like an application, users expect it to
                   act like one</li>
                 <li>Fallacies of distributed computing mean nothing to
@@ -192,6 +194,8 @@
                 <li>python is probably django's biggest strength</li>
                 <li>libraries are the lifeblood of a language, and the python
                   community has a tremendous bredth and depth of libraries</li>
+                <li>plus, we all have a fondness for the language, otherwise we
+                  wouldn't be here</li>
               </ul>
             </aside>
           </section>
@@ -201,8 +205,8 @@
               <ul>
                 <li>I mentioned that most of Django's strengths and weaknesses
                   stem from this one phrase</li>
-                <li>that means django is still an awesome tool for getting stuff
-                  done</li>
+                <li>decisions made with this in mind mean django is still an
+                  awesome tool for getting stuff done</li>
               </ul>
             </aside>
           </section>
@@ -215,7 +219,7 @@
                 <li>Some people bash django's orm as not complete or expressive
                   enough, but it's still my favorite</li>
                 <li>Now that migrations are built in, it's a tremendous battery
-                included that sets thte foundation for other productive
+                included that sets the foundation for other productive
                 tools</li>
               </ul>
             </aside>
@@ -226,10 +230,11 @@
             </header>
             <aside class="notes">
               <ul>
-                <li>yesterday morning Ola spent an entire talk about how
+                <li>yesterday morning Ola gave an entire talk about how
                   powerful the admin is for getting stuff done</li>
-                <li>nobody wants to spend their time writing an admin, so it's
-                  exactly the kind of feature that makes django valuable</li>
+                <li>nobody wants to spend their time writing an admin from
+                  scratch, so it's exactly the kind of feature that makes django
+                  valuable</li>
               </ul>
             </aside>
           </section>
@@ -372,9 +377,9 @@
             <img src="img/async-task-results.svg" height="600">
             <aside class="notes">
               <ul>
+                <li>Include task ids in endpoints which launch async tasks</li>
                 <li>Expose an API endpoint which takes a task id and responds
                   with the task state and result</li>
-                <li>Include task ids in endpoints which launch async tasks</li>
                 <li>setInterval in the client to poll for the task result</li>
               </ul>
             </aside>
@@ -402,11 +407,8 @@
               <ul>
                 <li>It's becoming increasingly common for javascript libraries
                   to support server side rendering of initial state in order to
-                  minimize ttime to usable page.</li>
+                  minimize time to usable page.</li>
                 <li>This cannot happen without js on the sever.</li>
-                <li>Use CORS to serve your client app from a different domain
-                  than your django api.</li>
-                <li>Alternatively, have node proxy api calls back to django</li>
               </ul>
             </aside>
           </section>
@@ -419,6 +421,8 @@
               <ul>
                 <li>Subprocess to node?</li>
                 <li>Straw man: slow, still running node</li>
+                <li>I think Eric Florenzano actually tried doing this at some
+                  point and gave up because it was so slow</li>
               </ul>
             </aside>
           </section>
@@ -433,6 +437,9 @@
               <ul>
                 <li>Depending on how you handle setting element state, there's a
                   bit more to it than this, but that's the gist</li>
+                <li>Use CORS to serve your client app from a different domain
+                  than your django api.</li>
+                <li>Alternatively, have node proxy api calls back to django</li>
               </ul>
             </aside>
           </section>
@@ -479,6 +486,19 @@
                   cookie or an access token)</li>
                 <li>You can also use local storage, but then there's no way to
                   take advantage of server side rendering</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <header>
+              <h2>authentication service</h2>
+            </header>
+            <img src="img/auth-service.svg">
+            <aside class="notes">
+              <ul>
+                <li>If you don't like the idea of delegating auth to a public
+                  service, you can create a dedicated private authentication
+                  service and delegate to it from all public services</li>
               </ul>
             </aside>
           </section>
