@@ -56,8 +56,7 @@
             <aside class="notes">
               <ul>
                 <li>
-                  Before we talk about django's role today, it's useful for us
-                  to understand a bit about its roots.
+                  Let's start by talking a bit about django's roots.
                 </li>
               </ul>
             </aside>
@@ -69,7 +68,7 @@
             <img src="img/git-commit-history.png" height="700">
             <aside class="notes">
               <ul>
-                <li>django is 10 yaers old this year</li>
+                <li>django was open sourced in 2005, 10 years ago</li>
                 <li>it's aged remarkably well</li>
               </ul>
             </aside>
@@ -78,11 +77,16 @@
             <header>
               <h2>django is not a cms</h2>
             </header>
-            <h3>(but it was built for one)</h3>
+            <h3 class="light">(but it was built for one)</h3>
             <aside class="notes">
               <ul>
-                <li>django has its roots in journalism</li>
-                <li>contrib belies those roots (content types, localflavor)</li>
+                <li>django was conceived as a CMS for Lawrence
+                  Journal-World</li>
+                <li>eventually they decided to split the codebase in 2, license
+                  the CMS bits, and open source the more generic web framework
+                  underneath.</li>
+                <li>So django has its roots deep in journalism</li>
+                <li>contrib belies those roots (admin, content types, localflavor)</li>
               </ul>
             </aside>
           </section>
@@ -90,7 +94,10 @@
             <h2>"perfectionists with deadlines"</h2>
             <aside class="notes">
               <ul>
-                <li>the motivation for a project dictates its trajectory</li>
+                <li>Django's slogan is "perfectionists with deadlines"</li>
+                <li>This gives us an idea of the the purpose of Django, the
+                  motivation for the project that has dictateted its
+                  trajectory</li>
                 <li>most of django's strengths and weaknesses can be summed up
                   in this one phrase</li>
               </ul>
@@ -103,6 +110,8 @@
             <h2 class="light">2005-2015</h2>
             <aside class="notes">
               <ul>
+                <li>While Django's core architecture has remained the same, the
+                web is a very different place than it was 10 years ago.</li>
               </ul>
             </aside>
           </section>
@@ -171,6 +180,8 @@
             <h1>strengths</h1>
             <aside class="notes">
               <ul>
+                <li>As I said, Django has aged well, and it still brings a lot
+                  to the table for developing modern web apps</li>
               </ul>
             </aside>
           </section>
@@ -178,9 +189,9 @@
             <h2>python</h2>
             <aside class="notes">
               <ul>
-                <li>no seriously, being written in python is a huge
-                  strength</li>
-                <li>
+                <li>python is probably django's biggest strength</li>
+                <li>libraries are the lifeblood of a language, and the python
+                  community has a tremendous bredth and depth of libraries</li>
               </ul>
             </aside>
           </section>
@@ -188,8 +199,10 @@
             <h2>"perfectionists with deadlines"</h2>
             <aside class="notes">
               <ul>
-                <li>all of django's strengths fall under this umbrella</li>
-                <li>django is still an awesome tool for getting stuff done</li>
+                <li>I mentioned that most of Django's strengths and weaknesses
+                  stem from this one phrase</li>
+                <li>that means django is still an awesome tool for getting stuff
+                  done</li>
               </ul>
             </aside>
           </section>
@@ -199,9 +212,11 @@
             </header>
             <aside class="notes">
               <ul>
-                <li>django's orm is still my favorite</li>
-                <li>migrations built in</li>
-                <li>orm sets the foundation for other productive tools</li>
+                <li>Some people bash django's orm as not complete or expressive
+                  enough, but it's still my favorite</li>
+                <li>Now that migrations are built in, it's a tremendous battery
+                included that sets thte foundation for other productive
+                tools</li>
               </ul>
             </aside>
           </section>
@@ -211,8 +226,10 @@
             </header>
             <aside class="notes">
               <ul>
-                <li>even with a dated design, the admin is an extremely powerful
-                  "battery included"</li>
+                <li>yesterday morning Ola spent an entire talk about how
+                  powerful the admin is for getting stuff done</li>
+                <li>nobody wants to spend their time writing an admin, so it's
+                  exactly the kind of feature that makes django valuable</li>
               </ul>
             </aside>
           </section>
@@ -222,8 +239,8 @@
             </header>
             <aside class="notes">
               <ul>
-                <li>super quick to get up and running with basic CRUD based on
-                  orm models</li>
+                <li>super quick to get up and running with basic CRUD actions
+                  for resources based on orm models</li>
               </ul>
             </aside>
           </section>
@@ -247,6 +264,8 @@
             <h1>weaknesses</h1>
             <aside class="notes">
               <ul>
+                <li>but for all those strengths, django is of course not without
+                  its weaknesses</li>
               </ul>
             </aside>
           </section>
@@ -254,10 +273,14 @@
             <h2>c10k</h2>
             <aside class="notes">
               <ul>
+                <li>The c10k problem has plagued django for years</li>
+                <li>(c10k shorthand for 10,000 concurrent connections)</li>
                 <li>most evident in long-polling and websocket apps</li>
-                <li>python wasn't built to be good at massive concurrency</li>
-                <li>solutions exist, but most do so at the expense of library
-                  support</li>
+                <li>python, at least python 2, wasn't built to be good at
+                  massive concurrency</li>
+                <li>solutions do exist, but either at the expense of library
+                  support or by monkeypatching, which can have some weird and
+                  subtle edge case behavior</li>
                 <li>Python, at least python + django, is just not the right tool
                   for this job</li>
                 <li>node.js and go were built with concurrency in mind</li>
@@ -270,8 +293,9 @@
               <ul>
                 <li>As we move toward richer js clients for our web apps, we've
                   developed a suite of tools to help</li>
-                <li>Most of those tools also exist within the js community</li>
-                <li>We don't get the full benefit without js on the server</li>
+                <li>But Most of those tools also exist within the js community,
+                js being the de facto language in the browser</li>
+                <li>We don't get the full benefit of these tools without js on the server</li>
               </ul>
             </aside>
           </section>
@@ -281,7 +305,7 @@
             <h1>example problems</h1>
             <aside class="notes">
               <ul>
-                <li>let's look at a few examples of problems and how we might
+                <li>let's look at a few example problems and how we might
                   solve them using a multi-platform web architecture</li>
               </ul>
             </aside>
@@ -435,8 +459,8 @@
                 <li>If you use django.contrib.auth, make sure you issue the
                   cookie on a domain that will be sent with requests to each
                   public service</li>
-                <li>If you use the admin, you won't have to log into it
-                  separately</li>
+                <li>One benefit if you use the admin, you won't have to log into
+                  it separately</li>
               </ul>
             </aside>
           </section>
@@ -467,6 +491,9 @@
             <h2>say no to full stack python</h2>
             <aside class="notes">
               <ul>
+                <li>I know this was a popular sentiment a few years ago. I think
+                  it shows a lack of appreciation for the bredth of tools
+                  available to us as web developers.</li>
                 <li>Right tool for the job means there are some jobs python is
                   just not the right tool for</li>
               </ul>
